@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app works!';
+  eventName = 'My cool event';
+
+  locations = [
+    {name: "Nashville", code: "37205"},
+    {name: "Franklin", code: "37205"},
+    {name: "Green Hill", code: "37205"},
+    {name: "Lipscomb", code: "37205"},
+  ];
+
 }
