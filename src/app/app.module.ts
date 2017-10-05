@@ -5,18 +5,40 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { EventComponent } from './event/event.component';
+import { VenueComponent } from './venue/venue.component';
+import {EventService} from './event/event.service';
+
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   declarations: [
     AppComponent,
-    EventComponent
+    EventComponent,
+    VenueComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot([
+      {
+        path: '',
+        component: AppComponent
+      },
+      {
+        path: 'event',
+        component: EventComponent
+      }
+      ,
+      {
+        path: 'venue',
+        component: VenueComponent
+      }
+    ])
   ],
-  providers: [],
+  providers: [
+    EventService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
