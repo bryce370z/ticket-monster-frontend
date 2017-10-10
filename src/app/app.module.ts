@@ -7,8 +7,9 @@ import { AppComponent } from './app.component';
 import { EventComponent } from './event/event.component';
 import { VenueComponent } from './venue/venue.component';
 import {EventService} from './event/event.service';
+import {VenueService} from './venue/venue.service';
 
-import {RouterModule} from "@angular/router";
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -26,18 +27,19 @@ import {RouterModule} from "@angular/router";
         component: AppComponent
       },
       {
-        path: 'event',
+        path: 'events',
         component: EventComponent
       }
       ,
       {
-        path: 'venue',
+        path: 'venues',
         component: VenueComponent
       }
     ])
   ],
   providers: [
-    EventService
+    EventService,
+    VenueService
   ],
   bootstrap: [AppComponent]
 })
