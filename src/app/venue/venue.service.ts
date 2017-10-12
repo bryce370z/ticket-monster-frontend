@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Http, Response, Headers} from '@angular/http';
+import {Http, Response, Headers, RequestOptions} from '@angular/http';
 import {Venue} from './venue';
 
 import { Observable } from 'rxjs/Observable';
@@ -20,7 +20,22 @@ export class VenueService {
   }
 
   public createVenue(venue: Venue): void {
-    this.http.post(this.venueUrl, venue);
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    const options = new RequestOptions({headers: headers});
+    this.http.post(this.venueUrl, venue, options);
+  }
+
+  public getEvent(id: string): Observable<Venue> {
+    return this.http.get(this.venueUrl + '/' + id)
+      .map(this.extractData);
+  }
+
+  public updateEvent(venue: Venue): Observable<any> {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    const options = new RequestOptions({headers: headers});
+    return this.http.put(this.venueUrl + '/' + venue._id, venue, options);
   }
 
   private extractData(res: Response) {
